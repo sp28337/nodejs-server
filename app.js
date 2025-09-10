@@ -1,4 +1,5 @@
 const http = require('http');
+const fs = require('fs');
 const PORT = 3500;
 
 http.createServer((req, res) => {
@@ -12,7 +13,8 @@ http.createServer((req, res) => {
             break;
         case "/contacts":
             console.log("contacts page");
-            res.write("<h1>Contacts page</h1>")
+            const data = fs.readFileSync("./contacts.html", {encoding: "utf8", flag: "r"});
+            res.write(data)
             break;
         default:
             console.log("404");
