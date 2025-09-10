@@ -1,11 +1,22 @@
 const http = require('http');
+const PORT = 3500;
 
 http.createServer((req, res) => {
-    console.log(req.url)
-    console.log(req.method)
-    console.log("Server is running");
-    res.setHeader("Content-Type","text/html; charset=utf-8;");
-    res.write("<h1>Hello Pattaya!</h1>");
-    res.write("<p>I am learning Node.js!</p>");
-    res.end()
-}).listen(3500);
+    const url = req.url;
+    console.log(url);
+  
+    switch (url) {
+        case "/":
+            console.log("main page");
+            res.write("<h1>Main page</h1>")
+            break;
+        case "/contacts":
+            console.log("contacts page");
+            res.write("<h1>Contacts page</h1>")
+            break;
+        default:
+            console.log("404");
+            res.write("<h1>404</h1>")
+    }
+    res.end();
+}).listen(PORT);
