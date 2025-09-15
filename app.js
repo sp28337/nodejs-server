@@ -28,7 +28,6 @@ http.createServer((req, res) => {
                 res.end();
             }
     }
-    // res.end();
 }).listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}`);
 });
